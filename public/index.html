@@ -143,41 +143,13 @@
         tp.push(["addHandler", "experienceExecute", onExperienceExecute]);
         tp.push(["addHandler", "experienceExecutionFailed", onExperienceExecutionFailed]);
     
-        (function(enableUserDB) {
-        var _matherq = (window._matherq = window._matherq || []);
-        var initialized;
-    
-        var done = function() {
-          if (!initialized) {
-          initialized = true;
-          timerId && clearTimeout(timerId);
-    
+       
           tp.push(["init", function () {
-                            tp.pianoId.init({'iframeUrl':'https://sandbox.tinypass.com'})
-    
+            tp.pianoId.init({'iframeUrl':'https://sandbox.tinypass.com'})
             tp.experience.init()
           }]);
-          }
-        };
-    
-        var timerId = setTimeout(function() {
-          done();
-        }, 3000);
-    
-        _matherq.push(['getTracker', function(tracker) {
-          tracker.setPaywall('piano', { userData: true });
-    
-          if (enableUserDB) {
-            tracker.getUserDBSegment({}, function(userDBData) { // segments will be in userDBData as an array, if userDBData.err is not defined
-              done();
-            });
-    
-          } else {
-            done();
-          }
-        }]);
-      })(false);
-    
+          
+
     })();
     </script>
     <script>
