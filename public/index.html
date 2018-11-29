@@ -105,26 +105,35 @@
                     switch (event.state){
                         case 'checkoutCompleted':
                                 console.log("CHECKOUT COMPLETED EVENT STATE")
-                                tp.amp.login()
-                                window.close()
+                                tp.amp.login({
+                                    loginSuccess: function () {console.log("loginSuccess1")},
+                                    loginFail: function () {console.log("loginFail1")} 
+                                    })
                             break;
                         case 'alreadyHasAccess':
                                 console.log(" HAS ACCESS EVENT STATE")
     
-                                tp.amp.login()
-                                window.close()
+                                tp.amp.login({
+                                  loginSuccess: function () {console.log("loginSuccess2") },
+                                  loginFail: function () {console.log("loginFail2")} 
+                                  })
                             // User already has access
                             // This state could be a result of user logging in during checkout process
                             // Usually it's a good practice to reload the page here as well
                             break;
                         case 'close':
-                                tp.amp.login()
-                                window.close()
+                                                              tp.amp.login({
+                              loginSuccess: function () {console.log("loginSuccess3")} ,
+                              loginFail: function () {console.log("loginFail3")} 
+                              })
                             // User did not complete the purchase and simply closed the modal
                     }
                 }]);
         tp.push(["addHandler", "loginSuccess", function(res){
-            tp.amp.login()
+                      tp.amp.login({
+                          loginSuccess: function () {console.log("loginSuccess4") },
+                          loginFail: function () {console.log("loginFail4")} 
+                          })
         }])
     
         tp.push(["addHandler", "checkoutCustomEvent", onCheckoutExternalEvent]);
