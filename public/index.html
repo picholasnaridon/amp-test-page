@@ -106,20 +106,20 @@
                         case 'checkoutCompleted':
                                 console.log("CHECKOUT COMPLETED EVENT STATE")
                                 tp.amp.login()
-                                parent.close()
+                                window.close()
                             break;
                         case 'alreadyHasAccess':
                                 console.log(" HAS ACCESS EVENT STATE")
     
                                 tp.amp.login()
-                                parent.close()
+                                window.close()
                             // User already has access
                             // This state could be a result of user logging in during checkout process
                             // Usually it's a good practice to reload the page here as well
                             break;
                         case 'close':
                                 tp.amp.login()
-                                parent.close()
+                                window.close()
                             // User did not complete the purchase and simply closed the modal
                     }
                 }]);
