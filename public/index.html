@@ -131,6 +131,7 @@
                 }]);
         tp.push(["addHandler", "loginSuccess", function(res){
                       tp.amp.login({
+                          userProvider: 'piano_id',
                           loginSuccess: function () {console.log("loginSuccess4") },
                           loginFail: function () {console.log("loginFail4")} 
                           })
